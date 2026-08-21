@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Verylium Network</title>
+  <link rel="icon" type="image/png" href="verylium-logo.png">
+  <link rel="shortcut icon" type="image/png" href="verylium-logo.png">
+  <meta
+    name="description"
+    content="Verylium Network - A Minecraft server built for an amazing community."
+  >
+
+  <meta name="theme-color" content="#e50914">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    :root {
+      --red: #e50914;
+      --red-light: #ff3942;
+      --red-dark: #a60008;
+      --black: #050505;
+      --dark: #090909;
+      --dark-2: #101012;
+      --dark-3: #171719;
+      --white: #ffffff;
+      --gray: #9b9ba3;
+      --border: rgba(255,255,255,.09);
+      --shadow: 0 25px 70px rgba(0,0,0,.55);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    html {
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--white);
+      background: var(--black);
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--red);
+      color: white;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #030303;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--red);
+      border-radius: 20px;
+    }
+
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -20;
+      background: #050505;
+      overflow: hidden;
+    }
+
+    .background-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.025) 1px,
+          transparent 1px
+        );
+      background-size: 70px 70px;
+      opacity: .25;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 78px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      background: rgba(5,5,5,.55);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      transition: .35s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(5,5,5,.92);
+      box-shadow: 0 15px 50px rgba(0,0,0,.4);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -.3px;
+    }
+
+    .brand-logo {
+      width: 43px;
+      height: 43px;
+      object-fit: contain;
+      border-radius: 10px;
+      filter: drop-shadow(
+        0 5px 20px
+        rgba(229,9,20,.35)
+      );
+      transition: .3s ease;
+    }
+
+    .brand:hover .brand-logo {
+      transform: rotate(-4deg) scale(1.06);
+    }
+
+    .brand-name {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+    }
+
+    .brand-name span {
+      color: var(--red-light);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      position: relative;
+      text-decoration: none;
+      color: #a7a7ad;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-links a:not(.discord-btn)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: .25s ease;
+    }
+
+    .nav-links a:not(.discord-btn):hover::after {
+      width: 100%;
+    }
+
+    .discord-btn {
+      padding: 11px 18px;
+      color: white !important;
+      border-radius: 9px;
+      background:
+        linear-gradient(
+          135deg,
+          var(--red-light),
+          var(--red-dark)
+        );
+      box-shadow:
+        0 8px 25px
+        rgba(229,9,20,.25);
+    }
+
+    .discord-btn:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 12px 32px
+        rgba(229,9,20,.4);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 6% 90px;
+      overflow: hidden;
+    }
+
+    .hero-background {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background-image:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,.35),
+          rgba(0,0,0,.60)
+        ),
+        linear-gradient(
+          to right,
+          rgba(0,0,0,.30),
+          rgba(229,9,20,.08)
+        ),
+        url("verylium-bg.png");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.03);
+      animation:
+        heroZoom 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from {
+        transform: scale(1.03);
+      }
+
+      to {
+        transform: scale(1.09);
+      }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(
+          circle at center,
+          transparent 10%,
+          rgba(0,0,0,.2) 55%,
+          rgba(0,0,0,.75) 100%
+        );
+    }
+
+    .hero-bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 220px;
+      background:
+        linear-gradient(
+          transparent,
+          var(--black)
+        );
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 950px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation:
+        heroEnter
+        1s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+    }
+
+    @keyframes heroEnter {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-logo {
+      display: block;
+      width: 125px;
+      height: 125px;
+      object-fit: contain;
+      margin: 0 auto 25px auto;
+      flex-shrink: 0;
+      filter:
+        drop-shadow(
+          0 15px 35px
+          rgba(0,0,0,.55)
+        );
+      animation:
+        logoFloat
+        4s
+        ease-in-out
+        infinite;
+    }
+
+    @keyframes logoFloat {
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .online-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 14px;
+      margin-bottom: 22px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(0,0,0,.38);
+      backdrop-filter: blur(12px);
+      border-radius: 100px;
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .7px;
+    }
+
+    .online-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #39e875;
+      box-shadow:
+        0 0 15px
+        #39e875;
+      animation:
+        onlinePulse
+        1.8s
+        infinite;
+    }
+
+    @keyframes onlinePulse {
+      0%,100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .5;
+        transform: scale(.75);
+      }
+    }
+
+    .hero h1 {
+      font-size:
+        clamp(
+          48px,
+          9vw,
+          100px
+        );
+      line-height: .92;
+      letter-spacing: -5px;
+      font-weight: 900;
+      text-shadow:
+        0 10px 50px
+        rgba(0,0,0,.7);
+    }
+
+    .hero h1 span {
+      color: var(--red-light);
+      text-shadow:
+        0 0 60px
+        rgba(229,9,20,.5);
+    }
+
+    .hero-description {
+      max-width: 650px;
+      margin: 25px auto 0;
+      color: #d0d0d4;
+      font-size: 16px;
+      line-height: 1.75;
+      text-shadow:
+        0 3px 15px
+        rgba(0,0,0,.7);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-width: 150px;
+      padding: 14px 21px;
+      border-radius: 10px;
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      overflow: hidden;
+      transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .btn:active {
+      transform: scale(.94);
+    }
+
+    .btn-primary {
+      color: white;
+      background:
+        linear-gradient(
+          135deg,
+          var(--red-light),
+          var(--red-dark)
+        );
+      box-shadow:
+        0 12px 35px
+        rgba(229,9,20,.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 18px 45px
+        rgba(229,9,20,.5);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,.10);
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -120%;
+      width: 80%;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.2),
+          transparent
+        );
+      transform: skewX(-20deg);
+      transition: .7s ease;
+    }
+
+    .btn:hover::after {
+      left: 140%;
+    }
+
+    .server-box {
+      max-width: 620px;
+      margin: 40px auto 0;
+      padding: 7px;
+      display: flex;
+      align-items: center;
+      background: rgba(0,0,0,.55);
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 13px;
+      backdrop-filter: blur(15px);
+      box-shadow:
+        0 15px 50px
+        rgba(0,0,0,.35);
+    }
+
+    .server-info {
+      flex: 1;
+      text-align: left;
+      padding: 8px 15px;
+    }
+
+    .server-label {
+      color: #85858c;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 4px;
+    }
+
+    .server-address {
+      font-family: monospace;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .server-address span {
+      color: var(--red-light);
+    }
+
+    .copy-btn {
+      border: 0;
+      cursor: pointer;
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: #242428;
+      color: white;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      transition: .25s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--red);
+      transform: translateY(-1px);
+    }
+
+    section {
+      padding: 110px 6%;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 45px;
+    }
+
+    .eyebrow {
+      color: var(--red-light);
+      font-size: 10px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-size:
+        clamp(
+          35px,
+          5vw,
+          58px
+        );
+      letter-spacing: -3px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .section-heading p {
+      color: var(--gray);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .info-section {
+      background:
+        linear-gradient(
+          to bottom,
+          var(--black),
+          #080809
+        );
+    }
+
+    .stats {
+      max-width: 1050px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 15px;
+    }
+
+    .stat {
+      padding: 30px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.05),
+          rgba(255,255,255,.015)
+        );
+      transition:
+        .35s
+        cubic-bezier(.2,.8,.2,1);
+    }
+
+    .stat:hover {
+      transform: translateY(-7px);
+      border-color: rgba(229,9,20,.45);
+      box-shadow: var(--shadow);
+    }
+
+    .stat-number {
+      font-size: 30px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      color: #77777f;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    #ranks {
+      background: #080809;
+    }
+
+    .rank-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 15px;
+    }
+
+    .rank-card {
+      position: relative;
+      min-height: 215px;
+      padding: 25px;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(
+          145deg,
+          #151518,
+          #0c0c0e
+        );
+      transition:
+        .35s
+        cubic-bezier(.2,.8,.2,1);
+    }
+
+    .rank-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      top: -100px;
+      right: -100px;
+      background: var(--red);
+      filter: blur(80px);
+      opacity: 0;
+      transition: .35s;
+    }
+
+    .rank-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(229,9,20,.45);
+      box-shadow: var(--shadow);
+    }
+
+    .rank-card:hover::before {
+      opacity: .3;
+    }
+
+    .rank-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 11px;
+      color: var(--red-light);
+      background: rgba(229,9,20,.1);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .rank-card h3 {
+      font-size: 17px;
+      margin-bottom: 7px;
+    }
+
+    .rank-card p {
+      color: #74747b;
+      font-size: 11px;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .price small {
+      color: #696970;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    #updates {
+      background: var(--black);
+    }
+
+    .updates {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 17px;
+    }
+
+    .update-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,.025);
+      transition: .3s ease;
+    }
+
+    .update-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(229,9,20,.35);
+    }
+
+    .update-date {
+      color: var(--red-light);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .update-card h3 {
+      font-size: 18px;
+      margin-bottom: 11px;
+    }
+
+    .update-card p {
+      color: #808088;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .cta {
+      position: relative;
+      margin: 30px 6% 110px;
+      padding: 75px 30px;
+      text-align: center;
+      overflow: hidden;
+      border: 1px solid rgba(229,9,20,.2);
+      border-radius: 22px;
+      background:
+        radial-gradient(
+          circle at center bottom,
+          rgba(229,9,20,.2),
+          transparent 55%
+        ),
+        linear-gradient(
+          145deg,
+          #171011,
+          #080808
+        );
+    }
+
+    .cta h2 {
+      font-size:
+        clamp(
+          34px,
+          5vw,
+          58px
+        );
+      letter-spacing: -3px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: #88888f;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    footer {
+      padding: 35px 6%;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: #65656c;
+      font-size: 11px;
+    }
+
+    footer strong {
+      color: #aaa;
+    }
+
+    .developer-link {
+      color: var(--red-light);
+      text-decoration: none;
+      font-weight: 800;
+      transition: .25s ease;
+    }
+
+    .developer-link:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      z-index: 9999;
+      transform: translate(-50%,120px);
+      opacity: 0;
+      padding: 13px 20px;
+      border-radius: 10px;
+      background: #18181b;
+      border: 1px solid rgba(255,255,255,.1);
+      box-shadow: var(--shadow);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      transition:
+        .35s
+        cubic-bezier(.2,.8,.2,1);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%,0);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 950px) {
+      .rank-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .updates {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 0 5%;
+      }
+
+      .brand {
+        gap: 12px;
+      }
+
+      .brand-name {
+        gap: 5px;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      .nav-links li:not(:last-child) {
+        display: none;
+      }
+
+      section {
+        padding: 80px 5%;
+      }
+
+      .hero {
+        padding: 130px 5% 80px;
+      }
+
+      .hero h1 {
+        letter-spacing: -3px;
+      }
+
+      .hero-logo {
+        width: 95px;
+        height: 95px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .rank-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .server-box {
+        flex-direction: column;
+        padding: 9px;
+      }
+
+      .server-info {
+        width: 100%;
+        text-align: center;
+      }
+
+      .copy-btn {
+        width: 100%;
+      }
+
+      .cta {
+        margin: 20px 5% 70px;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .brand-name {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="background">
+    <div class="background-grid"></div>
+  </div>
+
+  <nav id="navbar">
+
+    <a href="#home" class="brand">
+
+      <img
+        src="verylium-logo.png"
+        alt="Verylium Network Logo"
+        class="brand-logo"
+      >
+
+      <div class="brand-name">
+        <span style="color: white;">Verylium</span>
+        <span>Network</span>
+      </div>
+
+    </a>
+
+    <ul class="nav-links">
+
+      <li>
+        <a href="#home">
+          Home
+        </a>
+      </li>
+
+      <li>
+        <a href="#ranks">
+          Ranks
+        </a>
+      </li>
+
+      <li>
+        <a href="#updates">
+          Updates
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="https://discord.gg/ZNvspk84QN"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="discord-btn"
+        >
+          Discord
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+  <main id="home">
+
+    <section class="hero">
+
+      <div class="hero-background"></div>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-bottom"></div>
+
+      <div class="hero-content">
+
+        <img
+          src="verylium-logo.png"
+          alt="Verylium Network"
+          class="hero-logo"
+        >
+
+        <div class="online-status">
+          <span class="online-dot"></span>
+          VERYLIUM NETWORK IS ONLINE
+        </div>
+
+        <h1>
+          WELCOME TO
+          <br>
+          <span>VERYLIUM</span>
+        </h1>
+
+        <p class="hero-description">
+          A Minecraft network made for an amazing community.
+          Join Verylium Network, meet new players and begin
+          your adventure today.
+        </p>
+
+        <div class="buttons">
+
+          <a
+            href="#ranks"
+            class="btn btn-primary"
+          >
+            View Ranks
+          </a>
+
+          <a
+            href="https://discord.gg/ZNvspk84QN"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            Join Discord
+          </a>
+
+        </div>
+
+        <div class="server-box">
+
+          <div class="server-info">
+
+            <div class="server-label">
+              Minecraft Server
+            </div>
+
+            <div class="server-address">
+              asia.veryliumsmp.xyz<span>:27072</span>
+            </div>
+
+          </div>
+
+          <button
+            class="copy-btn"
+            onclick="copyServerAddress()"
+          >
+            Copy IP
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="info-section">
+
+      <div class="stats reveal">
+
+        <div class="stat">
+
+          <div class="stat-number">
+            24/7
+          </div>
+
+          <div class="stat-label">
+            SERVER AVAILABILITY
+          </div>
+
+        </div>
+
+        <div class="stat">
+
+          <div class="stat-number">
+            27072
+          </div>
+
+          <div class="stat-label">
+            SERVER PORT
+          </div>
+
+        </div>
+
+        <div class="stat">
+
+          <div class="stat-number">
+            8
+          </div>
+
+          <div class="stat-label">
+            RANKS AVAILABLE
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="ranks">
+
+      <div class="section-heading reveal">
+
+        <div class="eyebrow">
+          Store
+        </div>
+
+        <h2>
+          Choose Your Rank.
+        </h2>
+
+        <p>
+          Support Verylium Network and get access to
+          exclusive rank perks and features.
+        </p>
+
+      </div>
+
+      <div class="rank-grid">
+
+        <div class="rank-card reveal">
+
+          <div class="rank-icon">
+            Li
+          </div>
+
+          <h3>
+            Lithium
+          </h3>
+
+          <p>
+            @Lithium Rank
+          </p>
+
+          <div class="price">
+            ₱280
+            <small>/ rank</small>
+          </div>
+
+        </div>
+
+        <div class="rank-card reveal">
+
+          <div class="rank-icon">
+            ++
+          </div>
+
+          <h3>
+            Verylium++
+          </h3>
+
+          <p>
+            @Verylium++ Rank
+          </p>
+
+          <div class="price">
+            ₱225
+            <small>/ rank</small>
+          </div>
+
+        </div>
+
+        <div class="rank-card reveal">
+
+          <div class="rank-icon">
+            +
+          </div>
+
+          <h3>
+            Verylium+
+          </h3>
+
+          <p>
+            @Verylium+ Rank
+          </p>
+
+          <div class="price">
+            ₱175
+            <small>/ rank</small>
+          </div>
+
+        </div>
+
+        <div class="rank-card reveal">
+
+          <div class="rank-icon">
+            V
+          </div>
+
+          <h3>
+            Verylium
+          </h3>
+
+          <p>
+            @Verylium Rank
+          </p>
+
+          <div class="price">
+            ₱135
+            <small>/ rank</small>
+          </div>
+
+        </div>
+
+        <div class="rank-card reveal">
+
+          <div class="rank-icon">
+            E
+          </div>
+
+          <h3>
+            ELITE
+          </h3>
+
+          <p>
+            @ELITE Rank
+          </p>
+
+          <div class="price">
+            ₱100
+            <small>/ rank</small>
+          </div>
+
+        </div>
+
+        <div class="rank-card reveal">
+
+          <div class="rank-icon">
+            P
+          </div>
+
+          <h3>
+            Pro
+          </h3>
+
+          <p>
+            @Pro Rank
+          </p>
+
+          <div class="price">
+            ₱80
+            <small>/ rank</small>
+          </div>
+
+        </div>
+
+        <div class="rank-card reveal">
+
+          <div class="rank-icon">
+            M
+          </div>
+
+          <h3>
+            MVP
+          </h3>
+
+          <p>
+            @MVP Rank
+          </p>
+
+          <div class="price">
+            ₱60
+            <small>/ rank</small>
+          </div>
+
+        </div>
+
+        <div class="rank-card reveal">
+
+          <div class="rank-icon">
+            V
+          </div>
+
+          <h3>
+            VIP
+          </h3>
+
+          <p>
+            @VIP Rank
+          </p>
+
+          <div class="price">
+            ₱40
+            <small>/ rank</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="updates">
+
+      <div class="section-heading reveal">
+
+        <div class="eyebrow">
+          News
+        </div>
+
+        <h2>
+          Server Updates.
+        </h2>
+
+        <p>
+          Keep up with the latest Verylium Network news
+          and announcements.
+        </p>
+
+      </div>
+
+      <div class="updates">
+
+        <article class="update-card reveal">
+
+          <div class="update-date">
+            Latest
+          </div>
+
+          <h3>
+            Welcome to Verylium Network
+          </h3>
+
+          <p>
+            Welcome to Verylium Network! Join our community
+            and start your Minecraft adventure.
+          </p>
+
+        </article>
+
+        <article class="update-card reveal">
+
+          <div class="update-date">
+            Announcement
+          </div>
+
+          <h3>
+            Ranks Are Available
+          </h3>
+
+          <p>
+            Check out the available Verylium Network ranks
+            and choose the one that fits you.
+          </p>
+
+        </article>
+
+        <article class="update-card reveal">
+
+          <div class="update-date">
+            Community
+          </div>
+
+          <h3>
+            Join Our Discord
+          </h3>
+
+          <p>
+            Join our Discord community for announcements,
+            events, updates and more.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <div class="cta reveal">
+
+      <h2>
+        Ready to play?
+      </h2>
+
+      <p>
+        Join Verylium Network and start your adventure today.
+      </p>
+
+      <div class="buttons">
+
+        <button
+          class="btn btn-primary"
+          onclick="copyServerAddress()"
+        >
+          Copy Server IP
+        </button>
+
+        <a
+          href="https://discord.gg/ZNvspk84QN"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary"
+        >
+          Join Discord
+        </a>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+
+    <div>
+      © 2026
+      <strong>
+        Verylium Network
+      </strong>
+      . All rights reserved.
+    </div>
+
+    <div>
+      Website UI's and properties are freshly created by
+      <a
+        href="https://www.tiktok.com/@leqixntot?_r=1&_t=ZS-994OY3wXiVN"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="developer-link"
+      >
+        QixnDev
+      </a>
+    </div>
+
+  </footer>
+
+  <div
+    class="toast"
+    id="toast"
+  >
+    Server IP copied!
+  </div>
+
+  <script>
+    const SERVER_HOST = "asia.veryliumsmp.xyz";
+    const SERVER_PORT = "27072";
+
+    const FULL_SERVER_ADDRESS =
+      SERVER_HOST + ":" + SERVER_PORT;
+
+    function copyServerAddress() {
+      navigator.clipboard
+        .writeText(FULL_SERVER_ADDRESS)
+        .then(() => {
+          showToast(
+            "IP copied: " +
+            FULL_SERVER_ADDRESS
+          );
+        })
+        .catch(() => {
+          const text =
+            document.createElement("textarea");
+
+          text.value =
+            FULL_SERVER_ADDRESS;
+
+          text.style.position =
+            "fixed";
+
+          text.style.opacity =
+            "0";
+
+          document.body.appendChild(text);
+
+          text.focus();
+          text.select();
+
+          document.execCommand("copy");
+
+          text.remove();
+
+          showToast(
+            "IP copied: " +
+            FULL_SERVER_ADDRESS
+          );
+        });
+    }
+
+    let toastTimer;
+
+    function showToast(message) {
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+
+      toastTimer =
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2500);
+    }
+
+    const navbar =
+      document.getElementById("navbar");
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      }
+    );
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach(
+            (entry) => {
+              if (
+                entry.isIntersecting
+              ) {
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                revealObserver.unobserve(
+                  entry.target
+                );
+              }
+            }
+          );
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+    revealElements.forEach(
+      (element) => {
+        revealObserver.observe(
+          element
+        );
+      }
+    );
+
+    document
+      .querySelectorAll(
+        'a[href^="#"]'
+      )
+      .forEach(
+        (link) => {
+          link.addEventListener(
+            "click",
+            function(event) {
+              const id =
+                this.getAttribute("href");
+
+              if (id === "#") {
+                event.preventDefault();
+
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth"
+                });
+
+                return;
+              }
+
+              const target =
+                document.querySelector(id);
+
+              if (target) {
+                event.preventDefault();
+
+                target.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start"
+                });
+              }
+            }
+          );
+        }
+      );
+
+    document
+      .querySelectorAll(
+        ".btn, .copy-btn"
+      )
+      .forEach(
+        (button) => {
+          button.addEventListener(
+            "click",
+            function(event) {
+              const ripple =
+                document.createElement("span");
+
+              const rect =
+                this.getBoundingClientRect();
+
+              const x =
+                event.clientX -
+                rect.left;
+
+              const y =
+                event.clientY -
+                rect.top;
+
+              ripple.style.position =
+                "absolute";
+
+              ripple.style.left =
+                x + "px";
+
+              ripple.style.top =
+                y + "px";
+
+              ripple.style.width =
+                "10px";
+
+              ripple.style.height =
+                "10px";
+
+              ripple.style.borderRadius =
+                "50%";
+
+              ripple.style.background =
+                "rgba(255,255,255,.35)";
+
+              ripple.style.pointerEvents =
+                "none";
+
+              ripple.style.transform =
+                "translate(-50%,-50%) scale(1)";
+
+              ripple.style.transition =
+                "transform .6s ease, opacity .6s ease";
+
+              this.appendChild(ripple);
+
+              requestAnimationFrame(
+                () => {
+                  ripple.style.transform =
+                    "translate(-50%,-50%) scale(30)";
+
+                  ripple.style.opacity =
+                    "0";
+                }
+              );
+
+              setTimeout(
+                () => {
+                  ripple.remove();
+                },
+                650
+              );
+            }
+          );
+        }
+      );
+
+    window.addEventListener(
+      "load",
+      () => {
+        document.body.style.opacity =
+          "0";
+
+        requestAnimationFrame(
+          () => {
+            document.body.style.transition =
+              "opacity .5s ease";
+
+            document.body.style.opacity =
+              "1";
+          }
+        );
+      }
+    );
+  </script>
+
+</body>
+</html>
