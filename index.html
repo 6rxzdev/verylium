@@ -74,8 +74,15 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+        linear-gradient(
+          rgba(255,255,255,.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.025) 1px,
+          transparent 1px
+        );
       background-size: 70px 70px;
       opacity: .25;
     }
@@ -119,7 +126,10 @@
       height: 43px;
       object-fit: contain;
       border-radius: 10px;
-      filter: drop-shadow(0 5px 20px rgba(229,9,20,.35));
+      filter: drop-shadow(
+        0 5px 20px
+        rgba(229,9,20,.35)
+      );
       transition: .3s ease;
     }
 
@@ -177,13 +187,22 @@
       padding: 11px 18px;
       color: white !important;
       border-radius: 9px;
-      background: linear-gradient(135deg,var(--red-light),var(--red-dark));
-      box-shadow: 0 8px 25px rgba(229,9,20,.25);
+      background:
+        linear-gradient(
+          135deg,
+          var(--red-light),
+          var(--red-dark)
+        );
+      box-shadow:
+        0 8px 25px
+        rgba(229,9,20,.25);
     }
 
     .discord-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(229,9,20,.4);
+      box-shadow:
+        0 12px 32px
+        rgba(229,9,20,.4);
     }
 
     .hero {
@@ -202,19 +221,29 @@
       inset: 0;
       z-index: -3;
       background-image:
-        linear-gradient(to bottom,rgba(0,0,0,.35),rgba(0,0,0,.60)),
-        linear-gradient(to right,rgba(0,0,0,.30),rgba(229,9,20,.08)),
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,.35),
+          rgba(0,0,0,.60)
+        ),
+        linear-gradient(
+          to right,
+          rgba(0,0,0,.30),
+          rgba(229,9,20,.08)
+        ),
         url("verylium-bg.png");
       background-size: cover;
       background-position: center;
       transform: scale(1.03);
-      animation: heroZoom 14s ease-in-out infinite alternate;
+      animation:
+        heroZoom 14s ease-in-out infinite alternate;
     }
 
     @keyframes heroZoom {
       from {
         transform: scale(1.03);
       }
+
       to {
         transform: scale(1.09);
       }
@@ -225,7 +254,12 @@
       inset: 0;
       z-index: -2;
       background:
-        radial-gradient(circle at center,transparent 10%,rgba(0,0,0,.2) 55%,rgba(0,0,0,.75) 100%);
+        radial-gradient(
+          circle at center,
+          transparent 10%,
+          rgba(0,0,0,.2) 55%,
+          rgba(0,0,0,.75) 100%
+        );
     }
 
     .hero-bottom {
@@ -234,7 +268,11 @@
       right: 0;
       bottom: 0;
       height: 220px;
-      background: linear-gradient(transparent,var(--black));
+      background:
+        linear-gradient(
+          transparent,
+          var(--black)
+        );
     }
 
     .hero-content {
@@ -246,7 +284,11 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      animation: heroEnter 1s cubic-bezier(.2,.8,.2,1) forwards;
+      animation:
+        heroEnter
+        1s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
     }
 
     @keyframes heroEnter {
@@ -254,6 +296,7 @@
         opacity: 0;
         transform: translateY(35px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -267,14 +310,23 @@
       object-fit: contain;
       margin: 0 auto 25px auto;
       flex-shrink: 0;
-      filter: drop-shadow(0 15px 35px rgba(0,0,0,.55));
-      animation: logoFloat 4s ease-in-out infinite;
+      filter:
+        drop-shadow(
+          0 15px 35px
+          rgba(0,0,0,.55)
+        );
+      animation:
+        logoFloat
+        4s
+        ease-in-out
+        infinite;
     }
 
     @keyframes logoFloat {
       0%,100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(-8px);
       }
@@ -301,8 +353,21 @@
       height: 8px;
       border-radius: 50%;
       background: #39e875;
-      box-shadow: 0 0 15px #39e875;
-      animation: onlinePulse 1.8s infinite;
+      box-shadow:
+        0 0 15px
+        #39e875;
+      animation:
+        onlinePulse
+        1.8s
+        infinite;
+      flex-shrink: 0;
+    }
+
+    .online-dot.offline {
+      background: #e50914;
+      box-shadow:
+        0 0 15px
+        #e50914;
     }
 
     @keyframes onlinePulse {
@@ -310,6 +375,7 @@
         opacity: 1;
         transform: scale(1);
       }
+
       50% {
         opacity: .5;
         transform: scale(.75);
@@ -317,16 +383,25 @@
     }
 
     .hero h1 {
-      font-size: clamp(48px,9vw,100px);
+      font-size:
+        clamp(
+          48px,
+          9vw,
+          100px
+        );
       line-height: .92;
       letter-spacing: -5px;
       font-weight: 900;
-      text-shadow: 0 10px 50px rgba(0,0,0,.7);
+      text-shadow:
+        0 10px 50px
+        rgba(0,0,0,.7);
     }
 
     .hero h1 span {
       color: var(--red-light);
-      text-shadow: 0 0 60px rgba(229,9,20,.5);
+      text-shadow:
+        0 0 60px
+        rgba(229,9,20,.5);
     }
 
     .hero-description {
@@ -335,7 +410,9 @@
       color: #d0d0d4;
       font-size: 16px;
       line-height: 1.75;
-      text-shadow: 0 3px 15px rgba(0,0,0,.7);
+      text-shadow:
+        0 3px 15px
+        rgba(0,0,0,.7);
     }
 
     .buttons {
@@ -363,7 +440,10 @@
       font-size: 13px;
       font-weight: 800;
       overflow: hidden;
-      transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+      transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
     }
 
     .btn:active {
@@ -372,13 +452,22 @@
 
     .btn-primary {
       color: white;
-      background: linear-gradient(135deg,var(--red-light),var(--red-dark));
-      box-shadow: 0 12px 35px rgba(229,9,20,.35);
+      background:
+        linear-gradient(
+          135deg,
+          var(--red-light),
+          var(--red-dark)
+        );
+      box-shadow:
+        0 12px 35px
+        rgba(229,9,20,.35);
     }
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 18px 45px rgba(229,9,20,.5);
+      box-shadow:
+        0 18px 45px
+        rgba(229,9,20,.5);
     }
 
     .btn-secondary {
@@ -400,7 +489,13 @@
       bottom: 0;
       left: -120%;
       width: 80%;
-      background: linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.2),
+          transparent
+        );
       transform: skewX(-20deg);
       transition: .7s ease;
     }
@@ -419,7 +514,9 @@
       border: 1px solid rgba(255,255,255,.13);
       border-radius: 13px;
       backdrop-filter: blur(15px);
-      box-shadow: 0 15px 50px rgba(0,0,0,.35);
+      box-shadow:
+        0 15px 50px
+        rgba(0,0,0,.35);
     }
 
     .server-info {
@@ -485,7 +582,12 @@
     }
 
     .section-heading h2 {
-      font-size: clamp(35px,5vw,58px);
+      font-size:
+        clamp(
+          35px,
+          5vw,
+          58px
+        );
       letter-spacing: -3px;
       line-height: 1;
       margin-bottom: 16px;
@@ -498,7 +600,12 @@
     }
 
     .info-section {
-      background: linear-gradient(to bottom,var(--black),#080809);
+      background:
+        linear-gradient(
+          to bottom,
+          var(--black),
+          #080809
+        );
     }
 
     .stats {
@@ -514,8 +621,15 @@
       text-align: center;
       border: 1px solid var(--border);
       border-radius: 16px;
-      background: linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
-      transition: .35s cubic-bezier(.2,.8,.2,1);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.05),
+          rgba(255,255,255,.015)
+        );
+      transition:
+        .35s
+        cubic-bezier(.2,.8,.2,1);
     }
 
     .stat:hover {
@@ -549,13 +663,20 @@
 
     .rank-card {
       position: relative;
-      min-height: 290px;
+      min-height: 270px;
       padding: 25px;
       overflow: hidden;
       border-radius: 16px;
       border: 1px solid var(--border);
-      background: linear-gradient(145deg,#151518,#0c0c0e);
-      transition: .35s cubic-bezier(.2,.8,.2,1);
+      background:
+        linear-gradient(
+          145deg,
+          #151518,
+          #0c0c0e
+        );
+      transition:
+        .35s
+        cubic-bezier(.2,.8,.2,1);
     }
 
     .rank-card::before {
@@ -608,6 +729,7 @@
     .price {
       font-size: 25px;
       font-weight: 900;
+      margin-bottom: 18px;
     }
 
     .price small {
@@ -617,25 +739,10 @@
     }
 
     .choose-btn {
-      position: relative;
-      z-index: 2;
       width: 100%;
-      margin-top: 18px;
+      min-width: 0;
       padding: 11px 15px;
-      border: 0;
-      border-radius: 9px;
-      background: linear-gradient(135deg,var(--red-light),var(--red-dark));
-      color: white;
-      font-family: inherit;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: .25s ease;
-    }
-
-    .choose-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(229,9,20,.35);
+      font-size: 11px;
     }
 
     #updates {
@@ -690,12 +797,25 @@
       border: 1px solid rgba(229,9,20,.2);
       border-radius: 22px;
       background:
-        radial-gradient(circle at center bottom,rgba(229,9,20,.2),transparent 55%),
-        linear-gradient(145deg,#171011,#080808);
+        radial-gradient(
+          circle at center bottom,
+          rgba(229,9,20,.2),
+          transparent 55%
+        ),
+        linear-gradient(
+          145deg,
+          #171011,
+          #080808
+        );
     }
 
     .cta h2 {
-      font-size: clamp(34px,5vw,58px);
+      font-size:
+        clamp(
+          34px,
+          5vw,
+          58px
+        );
       letter-spacing: -3px;
       margin-bottom: 15px;
     }
@@ -748,7 +868,9 @@
       color: white;
       font-size: 12px;
       font-weight: 800;
-      transition: .35s cubic-bezier(.2,.8,.2,1);
+      transition:
+        .35s
+        cubic-bezier(.2,.8,.2,1);
     }
 
     .toast.show {
@@ -759,7 +881,9 @@
     .reveal {
       opacity: 0;
       transform: translateY(35px);
-      transition: opacity .7s ease, transform .7s ease;
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
     }
 
     .reveal.visible {
@@ -871,7 +995,12 @@
 
   <nav id="navbar">
     <a href="#home" class="brand">
-      <img src="verylium-logo.png" alt="Verylium Network Logo" class="brand-logo">
+      <img
+        src="verylium-logo.png"
+        alt="Verylium Network Logo"
+        class="brand-logo"
+      >
+
       <div class="brand-name">
         <span style="color: white;">Verylium</span>
         <span>Network</span>
@@ -880,16 +1009,30 @@
 
     <ul class="nav-links">
       <li>
-        <a href="#home">Home</a>
+        <a href="#home">
+          Home
+        </a>
       </li>
+
       <li>
-        <a href="#ranks">Ranks</a>
+        <a href="#ranks">
+          Ranks
+        </a>
       </li>
+
       <li>
-        <a href="#updates">Updates</a>
+        <a href="#updates">
+          Updates
+        </a>
       </li>
+
       <li>
-        <a href="https://discord.gg/ZNvspk84QN" target="_blank" rel="noopener noreferrer" class="discord-btn">
+        <a
+          href="https://discord.gg/ZNvspk84QN"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="discord-btn"
+        >
           Discord
         </a>
       </li>
@@ -904,11 +1047,18 @@
       <div class="hero-bottom"></div>
 
       <div class="hero-content">
-        <img src="verylium-logo.png" alt="Verylium Network" class="hero-logo">
+
+        <img
+          src="verylium-logo.png"
+          alt="Verylium Network"
+          class="hero-logo"
+        >
 
         <div class="online-status">
-          <span class="online-dot"></span>
-          VERYLIUM NETWORK IS ONLINE
+          <span class="online-dot" id="online-dot"></span>
+          <span id="server-status">
+            CHECKING SERVER...
+          </span>
         </div>
 
         <h1>
@@ -924,42 +1074,58 @@
         </p>
 
         <div class="buttons">
-          <a href="#ranks" class="btn btn-primary">
+          <a
+            href="#ranks"
+            class="btn btn-primary"
+          >
             View Ranks
           </a>
 
-          <a href="https://discord.gg/ZNvspk84QN" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <a
+            href="https://discord.gg/ZNvspk84QN"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
             Join Discord
           </a>
         </div>
 
         <div class="server-box">
+
           <div class="server-info">
             <div class="server-label">
               Minecraft Server
             </div>
 
             <div class="server-address">
-              asia.veryliumsmp.xyz<span>:27072</span>
+              veryliumsmp.xyz<span>:27072</span>
             </div>
           </div>
 
-          <button class="copy-btn" onclick="copyServerAddress()">
+          <button
+            class="copy-btn"
+            onclick="copyServerAddress()"
+          >
             Copy IP
           </button>
+
         </div>
+
       </div>
     </section>
 
     <section class="info-section">
+
       <div class="stats reveal">
 
         <div class="stat">
           <div class="stat-number">
-            24/7
+            <span id="stat-online">--</span>
           </div>
+
           <div class="stat-label">
-            SERVER AVAILABILITY
+            PLAYERS ONLINE
           </div>
         </div>
 
@@ -967,6 +1133,7 @@
           <div class="stat-number">
             27072
           </div>
+
           <div class="stat-label">
             SERVER PORT
           </div>
@@ -976,17 +1143,20 @@
           <div class="stat-number">
             8
           </div>
+
           <div class="stat-label">
             RANKS AVAILABLE
           </div>
         </div>
 
       </div>
+
     </section>
 
     <section id="ranks">
 
       <div class="section-heading reveal">
+
         <div class="eyebrow">
           Store
         </div>
@@ -999,11 +1169,13 @@
           Support Verylium Network and get access to
           exclusive rank perks and features.
         </p>
+
       </div>
 
       <div class="rank-grid">
 
         <div class="rank-card reveal">
+
           <div class="rank-icon">
             Li
           </div>
@@ -1021,12 +1193,17 @@
             <small>/ rank</small>
           </div>
 
-          <button class="choose-btn" onclick="chooseRank('Lithium', '₱280')">
+          <a
+            href="gcash.html"
+            class="btn btn-primary choose-btn"
+          >
             Choose
-          </button>
+          </a>
+
         </div>
 
         <div class="rank-card reveal">
+
           <div class="rank-icon">
             ++
           </div>
@@ -1044,12 +1221,17 @@
             <small>/ rank</small>
           </div>
 
-          <button class="choose-btn" onclick="chooseRank('Verylium++', '₱225')">
+          <a
+            href="gcash.html"
+            class="btn btn-primary choose-btn"
+          >
             Choose
-          </button>
+          </a>
+
         </div>
 
         <div class="rank-card reveal">
+
           <div class="rank-icon">
             +
           </div>
@@ -1067,12 +1249,17 @@
             <small>/ rank</small>
           </div>
 
-          <button class="choose-btn" onclick="chooseRank('Verylium+', '₱175')">
+          <a
+            href="gcash.html"
+            class="btn btn-primary choose-btn"
+          >
             Choose
-          </button>
+          </a>
+
         </div>
 
         <div class="rank-card reveal">
+
           <div class="rank-icon">
             V
           </div>
@@ -1090,12 +1277,17 @@
             <small>/ rank</small>
           </div>
 
-          <button class="choose-btn" onclick="chooseRank('Verylium', '₱135')">
+          <a
+            href="gcash.html"
+            class="btn btn-primary choose-btn"
+          >
             Choose
-          </button>
+          </a>
+
         </div>
 
         <div class="rank-card reveal">
+
           <div class="rank-icon">
             E
           </div>
@@ -1113,12 +1305,17 @@
             <small>/ rank</small>
           </div>
 
-          <button class="choose-btn" onclick="chooseRank('ELITE', '₱100')">
+          <a
+            href="gcash.html"
+            class="btn btn-primary choose-btn"
+          >
             Choose
-          </button>
+          </a>
+
         </div>
 
         <div class="rank-card reveal">
+
           <div class="rank-icon">
             P
           </div>
@@ -1136,12 +1333,17 @@
             <small>/ rank</small>
           </div>
 
-          <button class="choose-btn" onclick="chooseRank('Pro', '₱80')">
+          <a
+            href="gcash.html"
+            class="btn btn-primary choose-btn"
+          >
             Choose
-          </button>
+          </a>
+
         </div>
 
         <div class="rank-card reveal">
+
           <div class="rank-icon">
             M
           </div>
@@ -1159,12 +1361,17 @@
             <small>/ rank</small>
           </div>
 
-          <button class="choose-btn" onclick="chooseRank('MVP', '₱60')">
+          <a
+            href="gcash.html"
+            class="btn btn-primary choose-btn"
+          >
             Choose
-          </button>
+          </a>
+
         </div>
 
         <div class="rank-card reveal">
+
           <div class="rank-icon">
             V
           </div>
@@ -1182,17 +1389,23 @@
             <small>/ rank</small>
           </div>
 
-          <button class="choose-btn" onclick="chooseRank('VIP', '₱40')">
+          <a
+            href="gcash.html"
+            class="btn btn-primary choose-btn"
+          >
             Choose
-          </button>
+          </a>
+
         </div>
 
       </div>
+
     </section>
 
     <section id="updates">
 
       <div class="section-heading reveal">
+
         <div class="eyebrow">
           News
         </div>
@@ -1205,11 +1418,13 @@
           Keep up with the latest Verylium Network news
           and announcements.
         </p>
+
       </div>
 
       <div class="updates">
 
         <article class="update-card reveal">
+
           <div class="update-date">
             Latest
           </div>
@@ -1222,9 +1437,11 @@
             Welcome to Verylium Network! Join our community
             and start your Minecraft adventure.
           </p>
+
         </article>
 
         <article class="update-card reveal">
+
           <div class="update-date">
             Announcement
           </div>
@@ -1237,9 +1454,11 @@
             Check out the available Verylium Network ranks
             and choose the one that fits you.
           </p>
+
         </article>
 
         <article class="update-card reveal">
+
           <div class="update-date">
             Community
           </div>
@@ -1252,9 +1471,11 @@
             Join our Discord community for announcements,
             events, updates and more.
           </p>
+
         </article>
 
       </div>
+
     </section>
 
     <div class="cta reveal">
@@ -1269,15 +1490,24 @@
 
       <div class="buttons">
 
-        <button class="btn btn-primary" onclick="copyServerAddress()">
+        <button
+          class="btn btn-primary"
+          onclick="copyServerAddress()"
+        >
           Copy Server IP
         </button>
 
-        <a href="https://discord.gg/ZNvspk84QN" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        <a
+          href="https://discord.gg/ZNvspk84QN"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary"
+        >
           Join Discord
         </a>
 
       </div>
+
     </div>
 
   </main>
@@ -1294,163 +1524,420 @@
 
     <div>
       Website UI's and properties are freshly created by
-      <a href="https://www.tiktok.com/@leqixntot?_r=1&_t=ZS-994OY3wXiVN" target="_blank" rel="noopener noreferrer" class="developer-link">
+      <a
+        href="https://www.tiktok.com/@leqixntot?_r=1&_t=ZS-994OY3wXiVN"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="developer-link"
+      >
         QixnDev
       </a>
     </div>
 
   </footer>
 
-  <div class="toast" id="toast">
+  <div
+    class="toast"
+    id="toast"
+  >
     Server IP copied!
   </div>
 
   <script>
-    const SERVER_HOST = "asia.veryliumsmp.xyz";
+    const SERVER_HOST = "veryliumsmp.xyz";
     const SERVER_PORT = "27072";
-    const FULL_SERVER_ADDRESS = SERVER_HOST + ":" + SERVER_PORT;
+
+    const FULL_SERVER_ADDRESS =
+      SERVER_HOST + ":" + SERVER_PORT;
+
+    const STATUS_API =
+      "https://api.mcsrvstat.us/3/" +
+      FULL_SERVER_ADDRESS;
 
     function copyServerAddress() {
       navigator.clipboard
         .writeText(FULL_SERVER_ADDRESS)
         .then(() => {
-          showToast("IP copied: " + FULL_SERVER_ADDRESS);
+          showToast(
+            "IP copied: " +
+            FULL_SERVER_ADDRESS
+          );
         })
         .catch(() => {
-          const text = document.createElement("textarea");
-          text.value = FULL_SERVER_ADDRESS;
-          text.style.position = "fixed";
-          text.style.opacity = "0";
+          const text =
+            document.createElement("textarea");
+
+          text.value =
+            FULL_SERVER_ADDRESS;
+
+          text.style.position =
+            "fixed";
+
+          text.style.opacity =
+            "0";
+
           document.body.appendChild(text);
+
           text.focus();
           text.select();
+
           document.execCommand("copy");
+
           text.remove();
-          showToast("IP copied: " + FULL_SERVER_ADDRESS);
+
+          showToast(
+            "IP copied: " +
+            FULL_SERVER_ADDRESS
+          );
         });
     }
 
-    function chooseRank(rank, price) {
-      window.location.href =
-        "gcash.html?rank=" +
-        encodeURIComponent(rank) +
-        "&price=" +
-        encodeURIComponent(price);
+    async function updateServerStatus() {
+      const status =
+        document.getElementById("server-status");
+
+      const dot =
+        document.getElementById("online-dot");
+
+      const statOnline =
+        document.getElementById("stat-online");
+
+      try {
+        const response =
+          await fetch(STATUS_API, {
+            method: "GET",
+            cache: "no-store"
+          });
+
+        if (!response.ok) {
+          throw new Error(
+            "Status API returned " +
+            response.status
+          );
+        }
+
+        const data =
+          await response.json();
+
+        if (
+          data.online &&
+          data.players
+        ) {
+          const online =
+            data.players.online;
+
+          const max =
+            data.players.max;
+
+          status.textContent =
+            online +
+            " PLAYERS ONLINE";
+
+          statOnline.textContent =
+            online;
+
+          dot.classList.remove(
+            "offline"
+          );
+
+          dot.style.background =
+            "#39e875";
+
+          dot.style.boxShadow =
+            "0 0 15px #39e875";
+
+          if (
+            typeof max === "number"
+          ) {
+            status.textContent =
+              online +
+              " / " +
+              max +
+              " PLAYERS ONLINE";
+          }
+        } else if (data.online) {
+          status.textContent =
+            "VERYLIUM NETWORK IS ONLINE";
+
+          statOnline.textContent =
+            "0";
+
+          dot.classList.remove(
+            "offline"
+          );
+        } else {
+          status.textContent =
+            "SERVER OFFLINE";
+
+          statOnline.textContent =
+            "0";
+
+          dot.classList.add(
+            "offline"
+          );
+
+          dot.style.background =
+            "#e50914";
+
+          dot.style.boxShadow =
+            "0 0 15px #e50914";
+        }
+
+      } catch (error) {
+        console.error(
+          "Server status error:",
+          error
+        );
+
+        status.textContent =
+          "STATUS UNAVAILABLE";
+
+        statOnline.textContent =
+          "--";
+
+        dot.classList.add(
+          "offline"
+        );
+
+        dot.style.background =
+          "#77777f";
+
+        dot.style.boxShadow =
+          "0 0 10px #77777f";
+      }
     }
 
     let toastTimer;
 
     function showToast(message) {
-      const toast = document.getElementById("toast");
+      const toast =
+        document.getElementById("toast");
 
-      toast.textContent = message;
-      toast.classList.add("show");
+      toast.textContent =
+        message;
 
-      clearTimeout(toastTimer);
+      toast.classList.add(
+        "show"
+      );
 
-      toastTimer = setTimeout(() => {
-        toast.classList.remove("show");
-      }, 2500);
+      clearTimeout(
+        toastTimer
+      );
+
+      toastTimer =
+        setTimeout(() => {
+          toast.classList.remove(
+            "show"
+          );
+        }, 2500);
     }
 
-    const navbar = document.getElementById("navbar");
+    const navbar =
+      document.getElementById(
+        "navbar"
+      );
 
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
-    });
-
-    const revealElements = document.querySelectorAll(".reveal");
-
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (
+          window.scrollY > 50
+        ) {
+          navbar.classList.add(
+            "scrolled"
+          );
+        } else {
+          navbar.classList.remove(
+            "scrolled"
+          );
+        }
       }
     );
 
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
+    const revealElements =
+      document.querySelectorAll(
+        ".reveal"
+      );
 
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.addEventListener("click", function(event) {
-        const id = this.getAttribute("href");
+    const revealObserver =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach(
+            (entry) => {
+              if (
+                entry.isIntersecting
+              ) {
+                entry.target.classList.add(
+                  "visible"
+                );
 
-        if (id === "#") {
-          event.preventDefault();
-
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          });
-
-          return;
+                revealObserver.unobserve(
+                  entry.target
+                );
+              }
+            }
+          );
+        },
+        {
+          threshold: 0.12
         }
+      );
 
-        const target = document.querySelector(id);
+    revealElements.forEach(
+      (element) => {
+        revealObserver.observe(
+          element
+        );
+      }
+    );
 
-        if (target) {
-          event.preventDefault();
+    document
+      .querySelectorAll(
+        'a[href^="#"]'
+      )
+      .forEach(
+        (link) => {
+          link.addEventListener(
+            "click",
+            function(event) {
+              const id =
+                this.getAttribute(
+                  "href"
+                );
 
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
+              if (id === "#") {
+                event.preventDefault();
+
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth"
+                });
+
+                return;
+              }
+
+              const target =
+                document.querySelector(
+                  id
+                );
+
+              if (target) {
+                event.preventDefault();
+
+                target.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start"
+                });
+              }
+            }
+          );
         }
-      });
-    });
+      );
 
-    document.querySelectorAll(".btn, .copy-btn, .choose-btn").forEach((button) => {
-      button.addEventListener("click", function(event) {
-        const ripple = document.createElement("span");
-        const rect = this.getBoundingClientRect();
+    document
+      .querySelectorAll(
+        ".btn, .copy-btn"
+      )
+      .forEach(
+        (button) => {
+          button.addEventListener(
+            "click",
+            function(event) {
+              const ripple =
+                document.createElement(
+                  "span"
+                );
 
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
+              const rect =
+                this.getBoundingClientRect();
 
-        ripple.style.position = "absolute";
-        ripple.style.left = x + "px";
-        ripple.style.top = y + "px";
-        ripple.style.width = "10px";
-        ripple.style.height = "10px";
-        ripple.style.borderRadius = "50%";
-        ripple.style.background = "rgba(255,255,255,.35)";
-        ripple.style.pointerEvents = "none";
-        ripple.style.transform = "translate(-50%,-50%) scale(1)";
-        ripple.style.transition = "transform .6s ease, opacity .6s ease";
+              const x =
+                event.clientX -
+                rect.left;
 
-        this.appendChild(ripple);
+              const y =
+                event.clientY -
+                rect.top;
 
-        requestAnimationFrame(() => {
-          ripple.style.transform = "translate(-50%,-50%) scale(30)";
-          ripple.style.opacity = "0";
-        });
+              ripple.style.position =
+                "absolute";
 
-        setTimeout(() => {
-          ripple.remove();
-        }, 650);
-      });
-    });
+              ripple.style.left =
+                x + "px";
 
-    window.addEventListener("load", () => {
-      document.body.style.opacity = "0";
+              ripple.style.top =
+                y + "px";
 
-      requestAnimationFrame(() => {
-        document.body.style.transition = "opacity .5s ease";
-        document.body.style.opacity = "1";
-      });
-    });
+              ripple.style.width =
+                "10px";
+
+              ripple.style.height =
+                "10px";
+
+              ripple.style.borderRadius =
+                "50%";
+
+              ripple.style.background =
+                "rgba(255,255,255,.35)";
+
+              ripple.style.pointerEvents =
+                "none";
+
+              ripple.style.transform =
+                "translate(-50%,-50%) scale(1)";
+
+              ripple.style.transition =
+                "transform .6s ease, opacity .6s ease";
+
+              this.appendChild(
+                ripple
+              );
+
+              requestAnimationFrame(
+                () => {
+                  ripple.style.transform =
+                    "translate(-50%,-50%) scale(30)";
+
+                  ripple.style.opacity =
+                    "0";
+                }
+              );
+
+              setTimeout(
+                () => {
+                  ripple.remove();
+                },
+                650
+              );
+            }
+          );
+        }
+      );
+
+    updateServerStatus();
+
+    setInterval(
+      updateServerStatus,
+      30000
+    );
+
+    window.addEventListener(
+      "load",
+      () => {
+        document.body.style.opacity =
+          "0";
+
+        requestAnimationFrame(
+          () => {
+            document.body.style.transition =
+              "opacity .5s ease";
+
+            document.body.style.opacity =
+              "1";
+          }
+        );
+      }
+    );
   </script>
 
 </body>
